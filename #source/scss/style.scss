@@ -1,0 +1,632 @@
+// <МИКСИНЫ>===============================================================================================
+// миксин - комплект свойств, для быстрого вызова(подробнее mixins.scss)
+@import "mixins.scss";
+// </МИКСИНЫ>===============================================================================================
+
+// <ШРИФТЫ>===============================================================================================
+// <Подключаем шрифты>=======================================================================================
+@import url("https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Open+Sans:wght@300;400;500;600;700&display=swap&subset=curillic-ext"); // &display=swap; // * порядок загрузки шрифтов - улучшает скорость загрузки. Добавить в конец пути загрузки шрифта
+// &subset=curillic-ext // * для кириллицы. Так же в путь загрки, в плотную со swap.
+// @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+// подкл шрифты гугл, гуглфондс, напрямую
+// </Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+
+//</Иконочные шрифты>==========================================================================================
+
+// <ШРИФТ ПО УМОЛЧАНИЮ>==========================================================================================
+// переменая шрифта по умолчанию (можно несколько сразу завести)
+$fontfamily: "Open Sans";
+// </ШРИФТ ПО УМОЛЧАНИЮ>==========================================================================================
+
+// </ШРИФТЫ>=======================================================================================================
+
+// <ПЕРЕМЕННЫЕ>===========================================================================================================
+// сетка адаптива
+// минимальная ширина. статична
+$minwidth: 320px;
+// начальное значение контейниера из PSD. чаще всего использ дизайнерами
+$mw: 1170;
+// 1-ый брейкпоинт + 12px (по 6 с каждой стороны). измен по усмотрению
+$md1: $mw + 12;
+// планшетное расширение
+$md2: 991.98;
+// телефоны
+$md3: 767.98;
+// маленькие телефоны
+$md4: 479.98;
+// </ПЕРЕМЕННЫЕ>===========================================================================================================
+
+// <ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+// обнуляющий стиль для стандартизации по всем свойствам, брайзерам и пр.
+@import "null.scss";
+// </ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+// настройка блока .wrapper от горизонтального скрола изза ошибок верстки (чтоб не вылазилило за пределы экрана)
+
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+// основная сетка. подстройка под расширение экрана с учётом переменных из сетки адаптива
+
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЛЕМЕНТОВ>====================================================================================================
+//@import "../../js/fancybox/jquery.fancybox.scss";
+// @import "datepicker.scss";
+// @import "fontawesome.scss";
+// @import "popover.min.scss";
+// галерея
+@import "baguetteBox.scss";
+// @import "pagging.scss";
+// @import "icons.scss";
+// всплыв окна
+@import "popup.scss";
+// шапка
+@import "header.scss";
+// подвал
+@import "footer.scss";
+@import "home.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.container {
+    width: 75%;
+    min-height: 100%;
+    margin: 0 auto;
+    @include flexbox();
+    flex-direction: column;
+}
+
+.header {
+    @include flexbox();
+    height: 100%;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+
+    &__photo {
+        padding: 50px 0 0 0;
+        flex: 0 1 35%;
+        background-color: #2c323d;
+        min-height: 100%;
+        @include flexbox();
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .null {
+            content: "";
+            flex: 1 1 auto;
+        }
+
+        @media (max-width: 1500px) {
+            padding: 35px 0 0 0;
+        }
+
+        @media (max-width: 1170px) {
+            padding: 30px 0 0 0;
+        }
+
+        @media (max-width: 900px) {
+            padding: 25px 0 0 0;
+        }
+
+        @media (max-width: 700px) {
+            padding: 20px 0;
+            max-height: 200px;
+        }
+    }
+    &__myphoto {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 50% 0;
+
+        img {
+            max-width: 100%;
+            padding: 50% 0;
+            z-index: 55;
+            @include tr(0, -45%, 0);
+        }
+    }
+
+    &__title {
+        flex: 0 1 65%;
+        min-height: 100%;
+
+        @media (max-width: 700px) {
+            text-align: center;
+        }
+    }
+
+    .null {
+        content: "";
+        display: block;
+        flex: 1 1 auto;
+    }
+
+    &__name {
+        padding: 50px 0 0 0;
+        font-size: 75px;
+        font-weight: 600;
+        margin-bottom: 20px;
+
+        @media (max-width: 1170px) {
+            font-size: 55px;
+            margin-bottom: 10px;
+            padding: 30px 0 0 0;
+        }
+
+        @media (max-width: 900px) {
+            padding: 25px 0 0 0;
+            font-size: 40px;
+        }
+
+        @media (max-width: 700px) {
+            margin-bottom: 10px;
+            padding: 10px 0 0 0;
+            font-size: 35px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 30px;
+            padding: 8px 0 0 0;
+        }
+    }
+    &__proff {
+        font-size: 30px;
+        letter-spacing: 0.1em;
+
+        @media (max-width: 1170px) {
+            font-size: 23px;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 700px) {
+            font-size: 16px;
+        }
+    }
+}
+
+.container-left {
+    background-color: #2c323d;
+    width: 70%;
+    @include flexbox();
+    flex-direction: column;
+    color: #ffffff;
+    background-color: #2c323d;
+    margin: 0 auto 0 auto;
+
+    @media (max-width: 700px) {
+        width: 37%;
+    }
+}
+.container-right {
+    padding: 0 30px 0 70px;
+    @include flexbox();
+    flex-direction: column;
+    flex: 0 1 65%;
+    color: #2c323d;
+
+    @media (max-width: 1500px) {
+        padding: 0 30px 0 50px;
+    }
+
+    @media (max-width: 1170px) {
+        padding: 0 30px 0 40px;
+    }
+
+    @media (max-width: 900px) {
+        padding: 0 20px 0 30px;
+    }
+
+    @media (max-width: 700px) {
+        padding: 0 15px 0 15px;
+    }
+
+    @media (max-width: 400px) {
+        padding: 0 5px 0 5px;
+    }
+
+    .content__title::after {
+        background-color: #2c323d;
+    }
+}
+
+//=============================================================================================================
+
+.main {
+    flex: 1 1 auto;
+    &__container {
+        @include flexbox();
+
+        @media (max-width: 700px) {
+            flex-direction: column;
+        }
+    }
+
+    &__left {
+        background-color: #2c323d;
+        flex: 0 1 35%;
+        min-height: 100%;
+        @include flexbox();
+        flex-direction: column;
+
+        @media (max-width: 700px) {
+            @include flexorder(2);
+            text-align: center;
+        }
+    }
+
+    &__right {
+        flex: 0 1 65%;
+        @include flexbox();
+        flex-direction: column;
+
+        .content__text {
+            color: #555555;
+            font-size: 22px;
+            line-height: 30px;
+
+            @media (max-width: 700px) {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+.item {
+    @media (max-width: 700px) {
+        @include flexbox();
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        &__contact {
+            flex: 1 1 48%;
+            padding: 0 5px;
+        }
+    }
+
+    &__contact {
+        margin-bottom: 25px;
+
+        @media (max-width: 1170px) {
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 900px) {
+            margin-bottom: 12px;
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+.content {
+    @include flexbox();
+    padding-bottom: 40px;
+
+    @media (max-width: 1170px) {
+        padding-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+        padding-bottom: 25px;
+    }
+
+    &:first-child {
+        padding-top: 60px;
+
+        @media (max-width: 1170px) {
+            padding-top: 50px;
+        }
+
+        @media (max-width: 900px) {
+            padding-top: 30px;
+        }
+
+        @media (max-width: 700px) {
+            padding: 15px;
+            width: 100%;
+            @include flexorder(0);
+        }
+
+        @media (max-width: 400px) {
+            padding-top: 10px;
+        }
+    }
+    &:last-child {
+        @media (max-width: 700px) {
+            padding: 10px 0 0 0;
+        }
+    }
+
+    &__item {
+    }
+
+    &__subtitle {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+        @media (max-width: 1170px) {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+    }
+
+    &__title {
+        font-size: 35px;
+        font-weight: 600;
+        letter-spacing: 0.075em;
+        margin-bottom: 50px;
+        position: relative;
+        padding-bottom: 7px;
+
+        @media (max-width: 1170px) {
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        @media (max-width: 900px) {
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+
+        @media (max-width: 700px) {
+            text-align: center;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 80px;
+            bottom: -30px;
+            height: 5px;
+            background-color: #ffffff;
+            margin-bottom: 7px;
+
+            @media (max-width: 1170px) {
+                bottom: -20px;
+                width: 70px;
+                height: 4px;
+            }
+
+            @media (max-width: 900px) {
+                bottom: -15px;
+                width: 60px;
+                height: 3px;
+            }
+
+            @media (max-width: 700px) {
+                left: 50%;
+                @include tr(-62.5%, 0, 0);
+            }
+
+            @media (max-width: 400px) {
+                bottom: -10px;
+                width: 50px;
+                height: 2px;
+            }
+        }
+    }
+
+    &__text {
+        font-size: 20px;
+
+        a {
+            color: rgb(211, 191, 165);
+        }
+
+        @media (max-width: 1170px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        @media (max-width: 400px) {
+            // font-size: 10px;
+        }
+    }
+}
+
+.special {
+    font-size: 14px;
+
+    @media (max-width: 900px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+//=============================================================================================================
+
+.content {
+    &__row {
+        @include flexbox();
+        flex: 1 1 100%;
+        color: #555555;
+        margin-bottom: 20px;
+        position: relative;
+
+        @media (max-width: 1170px) {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 700px) {
+            text-align: center;
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: -8px;
+                left: 47.6%;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: #555555;
+    
+            }
+        }
+    }
+}
+.item {
+    &__column {
+    }
+}
+.left {
+    flex: 1 1 25%;
+    font-size: 18px;
+    line-height: 35px;
+    margin-right: 15px;
+
+    @media (max-width: 1170px) {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    @media (max-width: 900px) {
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    &__work {
+    }
+}
+.right {
+    flex: 1 1 75%;
+
+    @media (max-width: 700px) {
+        margin-bottom: 5px;
+    }
+    @media (max-width: 400px) {
+        margin-bottom: 0;
+    }
+
+    &__title {
+        font-size: 25px;
+        line-height: 40px;
+        font-weight: 500;
+
+        @media (max-width: 1170px) {
+            font-size: 22px;
+            line-height: 32px;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 18px;
+            line-height: 26px;
+        }
+    }
+
+    &__content {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 300;
+
+        @media (max-width: 1170px) {
+            font-size: 18px;
+            line-height: 26px;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 15px;
+            line-height: 24px;
+        }
+        @media (max-width: 700px) {
+            text-align: justify;
+        }
+    }
+}
+
+//====================================================================================================
+
+.skills {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &::before {
+        display: none;
+    }
+
+    &__img {
+        display: inline-block;
+        text-align: center;
+        flex: 1 1 10%;
+        margin: 0 5px 10px 0;
+
+        @media (max-width: 1170px) {
+            flex: 1 1 30%;
+        }
+       
+        img {
+            max-width: 42px;
+            height: auto;
+        }
+    }
+}
+
+
+//====================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+// элем форм, checkbox, select, кнопки
+@import "forms.scss";
+// сбор готовых и вспомогательных классов (ibg, video, заголовки, зеркало, серый стиль)
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
